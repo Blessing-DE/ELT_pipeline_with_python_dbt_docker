@@ -54,7 +54,7 @@ Below is the architectural diagram for this project
 |   `-- requirements.txt
 |-- metabase-data
 `-- pgadmin
-
+```
 ## How to Use the Project
 * **Clone the repository**
 ```bash
@@ -71,15 +71,15 @@ PG_HOST=your_host(likely postgres)
 PG_PORT=pg_port
 ```
 #### Extractor
-CSV_URL=the_url
-DOWNLOAD_DIR=/app/data
+*CSV_URL=the_url*
+*DOWNLOAD_DIR=/app/data*
 
 #### PgAdmin credentials
-PGADMIN_DEFAULT_EMAIL=pg_admin_email
-PGADMIN_DEFAULT_PASSWORD=pg_admin_password
+*PGADMIN_DEFAULT_EMAIL=pg_admin_email*
+*PGADMIN_DEFAULT_PASSWORD=pg_admin_password*
 
 #### Metabase
-MB_DB_FILE=/metabase.db
+*MB_DB_FILE=/metabase.db*
 
 * **Run the deployment script**
 This command builds the extractor image, pushes it to Docker Hub, and brings up all services.
@@ -99,7 +99,7 @@ docker exec -it elt_extractor sh -c "python /app/extract.py"
 ```bash
 docker exec -it elt_dbt bash -lc "dbt debug && dbt run && dbt test"
 ```
-This command will:
+The above command will:
 * Validate DB connections
 * Execute all SQL models (In our case *transform.sql*)
 * Run dbt tests
@@ -138,14 +138,14 @@ docker compose down -v
 
 ## Testing & Validation
 While working on this projects, a few test and validation are recommended and below are some of them
-* **Test 1: Data Load Verification**
-* Run extractor once manually.
-* Check that staging_enterprise table is created and populated.
-* **Test 2: dbt Model Validation**
-* Run dbt run and confirm analytics tables exist.
-* Run dbt test to ensure constraints pass.
-* **Test 3: Visualization**
-* Connect Metabase → Create chart → format & re-validate the values on the dashboard.
+* **Data Load Verification**
+* *Run extractor once manually*
+* *Check that staging_enterprise table is created and populated.*
+* **dbt Model Validation**
+* *Run dbt run and confirm analytics tables exist.*
+* *Run dbt test to ensure constraints pass.*
+* **Visualization**
+* *Connect Metabase → Create chart → format & re-validate the values on the dashboard.*
 
 ## Scalability Considerations
 * Add Airflow or any other preferred orchestration tool for advanced orchestration.
