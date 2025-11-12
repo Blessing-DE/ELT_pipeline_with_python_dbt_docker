@@ -1,0 +1,9 @@
+.env
+*.log
+__pycache__/
+*.pyc
+pgdata/
+extractor/data/
+metabase-data/
+pgadmin/
+*.csv

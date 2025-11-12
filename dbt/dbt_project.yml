@@ -1,0 +1,8 @@
+name: 'elt_project'
+version: '1.0'
+profile: 'default'
+
+models:
+  elt_project:
+    +materialized: table
+
