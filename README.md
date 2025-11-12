@@ -36,6 +36,7 @@ Below is the architectural diagram for this project
 ![Architecture Diagram](etl_docker_compose.drawio.svg)
 
 ## Project Layout
+```
 |-- README.md
 |-- dbt
 |   |-- dbt_project.yml
@@ -114,14 +115,14 @@ Login to Metabase for visualization using this port and the database credentials
 * Create dashboards and explore your models.
 
 Below is the visualization of the dataset using Metabase
-![Finance_Dashboard](MetabaseFinance.jpeg)
+![Finance_Dashboard](MetabaseFinance.jpg)
 
-* **Shut down or reset stack**
+### Shut down or reset the entire flow
 * To stop containers and remove the associated database volume:
 ```bash
-docker compose down
+docker compose down -v
 ```
-* **To redeploy fresh:**
+* **To redeploy afresh:**
 ```bash
 ./deploy.sh
 ```
@@ -133,7 +134,7 @@ docker compose down
 * Interactive BI with Metabase
 * Inspectable via pgAdmin
 * Fully containerized and reproducible
-* Single-command deployment (deploy.sh)
+* Single-command deployment (./deploy.sh)
 
 ## Testing & Validation
 While working on this projects, a few test and validation are recommended and below are some of them
@@ -142,13 +143,13 @@ While working on this projects, a few test and validation are recommended and be
 * Check that staging_enterprise table is created and populated.
 * **Test 2: dbt Model Validation**
 * Run dbt run and confirm analytics tables exist.
-* Run dbt test to ensure constraints (e.g., not_null) pass.
-## Test 3: Visualization
+* Run dbt test to ensure constraints pass.
+* **Test 3: Visualization**
 * Connect Metabase → Create chart → format & re-validate the values on the dashboard.
 
 ## Scalability Considerations
 * Add Airflow or any other preferred orchestration tool for advanced orchestration.
-* Move data from CSV → S3 → DB for large-scale use (utilize cloud service provider for this).
+* Move data from CSV → S3 → RDB for large-scale use (utilize cloud service provider for this).
 * Add logging and monitoring.
 
 
